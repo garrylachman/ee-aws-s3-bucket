@@ -1,0 +1,32 @@
+{
+      "name"                        : "ee-aws-s3-bucket"
+    , "description"                 : "rate limited up and file downloads for amazon s3"
+    , "version"                     : "0.1.0"
+    , "homepage"                    : "https://github.com/eventEmitter/ee-aws-s3-bucket"
+    , "author"                      : "Michael van der Weg <michael@eventemitter.com> (http://eventemitter.com/)" 
+    , "licence"                     : "mit"
+    , "os"                          : "linux"
+    , "repository": {
+          "url"                     : "https://github.com/eventEmitter/ee-aws-s3-bucket.git"
+        , "type"                    : "git"
+    }
+    , "engines": {
+        "node"                      : ">=v0.10.17"
+    }
+    , "bugs": {
+        "url"                       : "https://github.com/eventEmitter/ee-aws-s3-bucket/issues"
+    }
+    , "dependencies": {
+          "ee-class"                : "*"
+        , "ee-arguments"            : "*"
+        , "ee-types"                : "*"
+        , "ee-log"                  : "*"
+        , "ee-error"                : "*"
+        , "ee-resource-pool"        : "*"
+        , "request"                 : "*"
+    }
+    , "devDependencies": {
+          "ee-project"              : "*"
+    }
+    , "optionalDependencies": {}
+}
