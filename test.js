@@ -19,42 +19,50 @@
 		} );
 
 
-	bucket.upload( "/test/private/1a.jpg", "Image/Jpeg", file1, true, function( err ){
+	bucket.put( "/test/private/1e.jpg", "Image/Jpeg", file1, true, function( err ){
 		if ( err ) log.trace( err );
-		else log.info( "file1 a pushed" );
+		else {
+			log.info( "file1 e pushed" );
+
+			bucket.delete( "/test/private/1e.jpg", function( err, headers ){
+				if ( err ) log.trace( err );
+				else {
+					log.warn( "file removed" );
+					log( headers );	
+				}
+			}.bind( this ) );
+		}
 	} );
 
-	bucket.upload( "/test/private/1b.jpg", "Image/Jpeg", file1, true, function( err ){
-		if ( err ) log.trace( err );
-		else log.info( "file1 b pushed" );
-	} );
 
-	bucket.upload( "/test/private/1c.jpg", "Image/Jpeg", file1, true, function( err ){
-		if ( err ) log.trace( err );
-		else log.info( "file1 c pushed" );
-	} );
-
-	bucket.upload( "/test/private/1d.jpg", "Image/Jpeg", file1, true, function( err ){
-		if ( err ) log.trace( err );
-		else log.info( "file1 d pushed" );
-	} );
-
-	bucket.upload( "/test/private/1e.jpg", "Image/Jpeg", file1, true, function( err ){
-		if ( err ) log.trace( err );
-		else log.info( "file1 e pushed" );
-	} );
-
-	bucket.upload( "/test/private/1f.jpg", "Image/Jpeg", file1, true, function( err ){
+	bucket.put( "/test/private/1f.jpg", "Image/Jpeg", file1, true, function( err ){
 		if ( err ) log.trace( err );
 		else log.info( "file1 f pushed" );
 	} );
 
 
+	bucket.list( "/test/private/", function( err, file, headers ){
+		if ( err ) log.trace( err );
+		else {
+			log( headers );
+			log( file );
+		}
+	} );
 
-	bucket.download( "/test/private/1f.jpg", function( err, file, headers ){
+
+	bucket.get( "/test/private/1f.jpg", function( err, file, headers ){
 		if ( err ) log.trace( err );
 		else {
 			log( headers );
 			fs.writeFile( "./test/downlaoded.jpg", file );
 		}
 	} );
+
+
+	bucket.delete( "/test/private/", function( err, headers ){
+				if ( err ) log.trace( err );
+				else {
+					log.warn( "file removed" );
+					log( headers );	
+				}
+			}.bind( this ) );
