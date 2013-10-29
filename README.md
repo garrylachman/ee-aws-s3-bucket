@@ -1,6 +1,6 @@
 # ee-aws-s3-bucket
 
-Easy AWS s3 Bucket implementation. upload, download and delete ( recursive ) files from your Buckets. You Bucket is handled like a normal Filesystem.
+Easy AWS S3 Bucket implementation. Upload, download and delete ( recursive ) files from your buckets.
 
 ## installation
 
