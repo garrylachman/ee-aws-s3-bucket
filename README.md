@@ -30,6 +30,7 @@ Easy AWS S3 Bucket implementation. Upload, download and delete ( recursive ) fil
 	myBucket.put( path, data, [ callback( err ){} ], [ contentType ], [ headers ], [ private ] );
 
 you may pass the arguments below in any order as long the first string argument is the path for the file
+
 - path: string, where to put the file ( mandatory )
 - data: string or buffer, the actual data ( mandatory )
 - callback: function, called when the upload finished or faield ( optional )

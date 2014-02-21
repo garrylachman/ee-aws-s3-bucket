@@ -12,9 +12,9 @@
 	var   S3Bucket 	= require( "./" )
 		, file1 	= fs.readFileSync( "./test/1.jpg" )
 		, bucket 	= new S3Bucket( project.config || {
-		      key:      ""
-		    , secret:   ""
-		    , bucket:   ""
+		      key:      project.config.key
+		    , secret:   project.config.secret
+		    , bucket:   project.config.bucket
 		    , maxConcurrentUploads: 2
 		} );
 
@@ -39,15 +39,16 @@
 		if ( err ) log.trace( err );
 		else log.info( "file1 f pushed" );
 	} );
+	
 
-
-	bucket.list( "/test/private/", function( err, file, headers ){
+	bucket.list( "/", function( err, file, headers ){
 		if ( err ) log.trace( err );
 		else {
 			log( headers );
 			log( file );
 		}
 	} );
+
 
 
 	bucket.get( "/test/private/1f.jpg", function( err, file, headers ){
@@ -66,3 +67,5 @@
 					log( headers );	
 				}
 			}.bind( this ) );
+
+			
