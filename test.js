@@ -60,12 +60,20 @@
 	} );
 
 
+	bucket.head( "/test/private/1f.jpg", function( err, headers ){
+		if ( err ) log.trace( err );
+		else {
+			log.error('head', headers );
+		}
+	} );
+
+
 	bucket.delete( "/test/private/", function( err, headers ){
-				if ( err ) log.trace( err );
-				else {
-					log.warn( "file removed" );
-					log( headers );	
-				}
-			}.bind( this ) );
+		if ( err ) log.trace( err );
+		else {
+			log.warn( "file removed" );
+			log( headers );	
+		}
+	}.bind( this ) );
 
 			
