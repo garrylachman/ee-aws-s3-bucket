@@ -1,11 +1,10 @@
 {
       "name"                        : "ee-aws-s3-bucket"
     , "description"                 : "Easy AWS S3 Bucket implementation. Upload, download and delete ( recursive ) files from your buckets."
-    , "version"                     : "0.2.6"
+    , "version"                     : "0.2.7"
     , "homepage"                    : "https://github.com/eventEmitter/ee-aws-s3-bucket"
     , "author"                      : "Michael van der Weg <michael@eventemitter.com> (http://eventemitter.com/)" 
     , "licence"                     : "mit"
-    , "os"                          : "linux"
     , "repository": {
           "url"                     : "https://github.com/eventEmitter/ee-aws-s3-bucket.git"
         , "type"                    : "git"
