@@ -36,11 +36,11 @@ you may pass the arguments below in any order as long the first string argument 
 - callback: function, called when the upload finished or faield ( optional )
 - contentType: string, the content type header ( content type of the file, optional )
 - headers: object, you may pass any headers you wish ( optional )
-- private: flags a file as private or publid ( defaults ot private, optional ) 
-	
-	
+- private: flags a file as private or publid ( defaults ot private, optional )
+
+
 #### example
-	
+
 	myBucket.put( "/test/file1.jpg", fs.readfileSync( "./test/file1.jpg" ), "Image/Jpeg", function( err ){
 		if ( err ) log.trace( err );
 		else {
@@ -71,8 +71,8 @@ list files which have a certain path prefix, e.g. if you list «/te» all files 
 	};
 
 	myBucket.list( "/test/", handleListResult );
-    
-    
+
+
 ### list common prefixes
 
 list common prefixes which have a certain path prefix & delimiter. (added by Garry Lachman, https://github.com/garrylachman)
@@ -96,7 +96,7 @@ list common prefixes which have a certain path prefix & delimiter. (added by Gar
 	};
 
 	myBucket.listCommonPrefixes( "", "/", handleListCommonPrefixesResult );
-    
+
 
 ### download files
 
@@ -104,11 +104,11 @@ list common prefixes which have a certain path prefix & delimiter. (added by Gar
 	myBucket.get( path, callback( err, file, headers ){} );
 
 - path: string, where to put the file ( mandatory )
-- callback: function, called when the download finished or faield ( mandatory )
+- callback: function, called when the download finished or failed ( mandatory )
 
 
 #### example
-	
+
 	myBucket.get( "/test/file1.jpg", function( err, data, headers ){
 		if ( err ) log.trace( err );
 		else {
@@ -116,6 +116,30 @@ list common prefixes which have a certain path prefix & delimiter. (added by Gar
 			log( headers );
 		}
 	} );
+
+
+	### download files (accelerate mode)
+
+		// get ( download ) an object from your S3 bucket in accelerate mode. (added by Garry Lachman, https://github.com/garrylachman)
+		myBucket.getAccelerate( path, callback( err, file, headers ){} );
+
+	- path: string, where to put the file ( mandatory )
+	- callback: function, called when the download finished or failed ( mandatory )
+
+	More about S3 accelerate mode 
+	http://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html
+
+	#### example
+
+		myBucket.getAccelerate( "/test/file1.jpg", function( err, data, headers ){
+			if ( err ) log.trace( err );
+			else {
+				fs.writeFile( "./test/downlaodedfile.jpg", data );
+				log( headers );
+			}
+		} );
+
+
 
 
 ### delete files
@@ -130,7 +154,7 @@ you may either delete a directory or a single file, if you wish to delete a dire
 
 
 #### example
-	
+
 	// delete a file
 	myBucket.delete( "/test/file1.jpg", function( err ){
 		if ( err ) log.trace( err );
